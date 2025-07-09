@@ -1,0 +1,351 @@
+:root {
+    --clr1: #7b2cbf;
+    --clr2: #9d4edd;
+    --clr3: #e0aaff;
+}
+
+.chat-container {
+    width: 45vw;
+    margin-top: 4vh;
+    margin-left: 3vh;
+    height: 80vh;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(123, 44, 191, 0.2);
+    background-color: #f7f0ff;
+}
+
+.header {
+    background: linear-gradient(to right, var(--clr1), var(--clr3));
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2vw;
+    color: white;
+    font-size: 1.5vw;
+    font-weight: 600;
+}
+
+.profileInfo h2 {
+    font-size: 1.4vw;
+    font-weight: 600;
+}
+
+.chatBox {
+    flex: 1;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    background: linear-gradient(to bottom right, #f3e8ff, #f8f0ff);
+    padding: 1.5vh 2vw;
+}
+
+.chatBox::-webkit-scrollbar {
+    display: none;
+}
+
+.inputBox {
+    height: 12%;
+    background: linear-gradient(to right, var(--clr3), #fce4ff);
+    display: flex;
+    align-items: center;
+    padding: 0 1.5vw;
+    gap: 1vw;
+}
+
+#chatInput {
+    flex: 1;
+    border: none;
+    border-radius: 12px;
+    padding: 1.2vh 1vw;
+    font-size: 1vw;
+    background-color: #f1e1fc;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+}
+
+.sendBtn {
+    background-color: var(--clr2);
+    border: none;
+    border-radius: 12px;
+    padding: 0.8vh 1vw;
+    transition: 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sendBtn img {
+    width: 2vw;
+    filter: brightness(100) invert();
+    transition: transform 0.3s ease;
+}
+
+.sendBtn:hover {
+    background-color: var(--clr1);
+}
+
+.sendBtn:hover img {
+    transform: translateX(1vw);
+}
+
+.emoji-btn {
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: #7b2cbf;
+    transition: 0.3s;
+}
+
+.emoji-btn:hover {
+    color: #9d4edd;
+    transform: scale(1.3);
+}
+
+.emoji-picker {
+    position: absolute;
+    bottom: 14vh;
+    right: 3vw;
+    z-index: 10;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 8px 16px rgba(123, 44, 191, 0.2);
+}
+.warning-content {
+    background: black;
+    color: red;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.warning-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.warning-content p {
+    margin: 15px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.warning-content button {
+    background: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.warning-content button:hover {
+    background: darkred;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.message-container {
+    display: flex;
+    width: 100%;
+    padding: 0.5rem;
+    clear: both;
+}
+
+.message-bubble {
+    max-width: 70%;
+    padding: 0.8rem 1rem;
+    border-radius: 1rem;
+    word-wrap: break-word;
+    position: relative;
+}
+
+.message-bubble.left {
+    border-bottom-left-radius: 0.3rem;
+    float: left;
+}
+
+.message-bubble.right {
+    border-bottom-right-radius: 0.3rem;
+    float: right;
+}
+
+.audio-message audio {
+    outline: none;
+}
+
+.audio-message audio::-webkit-media-controls-panel {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 0.5rem;
+}
+
+.username {
+    color: #555;
+    opacity: 0.8;
+}
+
+/* Recording Indicator Styles */
+.recording-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.recording-indicator {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.pulse-animation {
+    width: 20px;
+    height: 20px;
+    background-color: #ff3b30;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.stop-recording-btn {
+    background-color: #ff3b30;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.stop-recording-btn:hover {
+    background-color: #ff1a1a;
+}
+
+/* Mic button when recording */
+.mic-btn.recording {
+    background-color: #ff3b30;
+    animation: pulse 1.5s infinite;
+}
+
+/* Audio Message Styles */
+.audio-message {
+    min-width: 180px;
+    padding: 8px 12px;
+    border-radius: 18px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.audio-control {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.audio-control:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.audio-control.play {
+    background-color: #7b2cbf;
+}
+
+.audio-control.pause {
+    background-color: #ff3b30;
+}
+
+.audio-progress-container {
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 0 8px;
+    flex-grow: 1;
+}
+
+.audio-progress-bar {
+    height: 100%;
+    background-color: white;
+    border-radius: 2px;
+    transition: width 0.1s linear;
+}
+
+.audio-duration {
+    color: rgba(255, 255, 255, 0.7);
+    min-width: 40px;
+    text-align: right;
+}
+
+/* For received messages (left side) */
+.message-bubble.left .audio-message {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.message-bubble.left .audio-control {
+    color: #333;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.message-bubble.left .audio-control.play {
+    background-color: #e0aaff;
+    color: #7b2cbf;
+}
+
+.message-bubble.left .audio-control.pause {
+    background-color: #ff3b30;
+    color: white;
+}
+
+.message-bubble.left .audio-progress-container {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.message-bubble.left .audio-progress-bar {
+    background-color: #7b2cbf;
+}
+
+.message-bubble.left .audio-duration {
+    color: rgba(0, 0, 0, 0.6);
+}
